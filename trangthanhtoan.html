@@ -1,0 +1,516 @@
+<html>
+<head>
+    <title>trangthanhtoan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex; 
+            flex-direction: column; /* Xếp các phần tử theo chiều dọc */
+            min-height: 100vh;
+        }
+        main{
+            padding: 40px;
+        }
+        * {
+    box-sizing: border-box;
+        }
+    /*Chỉnh phần Header*/
+        header {
+            background-color: #05719D;
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header img {
+            height: 40px;
+        }
+    /*Phần Menu*/
+        .header-left a {
+            text-decoration: none;
+            color: #D7F9FD;
+            margin-right:50px;
+            position: relative;
+            transition: all 0.3s ease;
+            padding-top: 10px;
+        }
+    /*Thêm dấu gạch dưới cho Menu khi di chuột vào*/
+        .header-left a::before { 
+            content: "";
+            position: absolute;
+            bottom: 0; 
+            left: 0;
+            width: 100%;
+            height: 2px; 
+            background-color: transparent; 
+            transition: background-color 0.3s ease; 
+        }
+        .header-left a:hover::before {
+            background-color: #A0D5E8; 
+        }
+        .header-left a:hover {
+            transform: scale(1.05);  
+            color: #A0D5E8;
+        }
+    /*Icon*/
+        .header-right {
+            display: flex;
+        }
+        .header-right i {
+            color: #D7F9FD;
+            margin: 0 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            padding: 10px;
+        }
+        .header-right i:hover {
+            color: #A0D5E8;
+        }
+    /* Thanh tìm kiếm*/
+        .search-bar {
+            display: flex;
+
+        }
+        .search-bar input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            width: 150px;
+        }
+        .search-bar button {
+            background-color: #05719D;
+            color: white;
+            border: none;
+            padding: 2px 5px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+    /*Chỉnh drop-down cho sản phẩm*/
+        .drop-down {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .detail {
+            display: none;
+            position: absolute;
+            background-color: #D7F9FD;
+            box-shadow: 0 8px 16px #05719D;
+        }
+        .drop-down:hover .detail{
+            display: block; 
+        }
+        .detail a{
+            color: #05719D;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .detail a:hover{
+            color:#05719D;
+            cursor:pointer;
+        }
+    
+        .row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-35 {
+  -ms-flex: 35%; /* IE10 */
+  flex: 35%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-65 {
+  -ms-flex: 65%; /* IE10 */
+  flex: 65%;
+}
+
+.col-35,
+.col-50,
+.col-65 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: white;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #33cee5;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #ff8204;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+
+footer {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 50px;
+    background-color: #33cee5;
+}
+
+footer .container1 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 1.5fr 0.5fr;
+    grid-gap: 120px;
+}
+
+footer .container1 .sec h2 {
+    position: relative;
+    color: black;
+    font-weight: 600;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+footer .container1 .sec p {
+    color: rgb(36, 33, 33);
+}
+
+footer .container1 .sci {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+    gap: 40px; /* Optional: Add space between icons */
+}
+
+footer .container1 .sci li {
+    list-style: none;
+}
+
+footer .container1 .sci li a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: #33cee5;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+footer .container1 .sci li a:hover {
+    background: #20a2b8; /* Hover effect */
+}
+
+footer .container1 .sci li a i {
+    color: black;
+    font-size: 20px;
+}
+
+footer .container1 .quicklinks {
+    position: relative;
+}
+
+
+footer .container1 .quicklinks ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+footer .container1 .quicklinks ul li a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+footer .container1 .info {
+    list-style: none;
+}
+
+footer .container1 .info li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+footer .container1 .info li span {
+    margin-right: 10px;
+}
+
+footer .container1 .info li p a {
+    text-decoration: none;
+    color: black;
+}
+
+footer .container1 .info li p a:hover {
+    text-decoration: underline;
+    color: white;
+}
+
+.copyrightText {
+    width: 100%;
+    background-color: black;
+    padding: 20px 100px 30px;
+    text-align: center;
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 15);
+}
+
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+    </style>
+</head>
+<body>
+    <header>
+            <img src="./Ảnh/Logo.png">
+        <div class="header-left">
+            <a href="#"><strong>TRANG CHỦ</strong></a>
+            <div class="drop-down">
+            <a href="#"><strong>SẢN PHẨM</strong></a>
+                <div class="detail">
+                    <a href="#"><strong>ANIMALS</strong></a>
+                    <a href="#"><strong>BAGS & CHARMS</strong></a>
+                    <a href="#"><strong>AMUSEABLES</strong></a>
+                </div>
+            </div>
+            <a href="#"><strong>GIỎ HÀNG</strong></a>
+            <a href="#"><strong>THANH TOÁN</strong></a>
+            <a href="#"><strong>TIN TỨC</strong></a>
+        </div>
+        <div class="header-right">
+            <div class="search-bar">
+                <form action="#" method="get">
+                    <input type="text" name="timkiem" placeholder="Tìm kiếm...">
+                    <button type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+                <i class="fa fa-shopping-cart"></i>
+                <i class="fa fa-user"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+
+<div class="row">
+  <div class="col-65">
+    <div class="container">
+      <form action="/action_page.php" onsubmit="return showAlert()"> 
+      
+        <div class="row">
+          <div class="col-50">
+            <h3>Thông tin đặt hàng</h3>
+            <label for="fname"><i class="fa fa-user"></i> Họ và Tên</label>
+            <input type="text" id="fname" name="firstname" placeholder="Nhập tại đây...." required>
+            <label for="email"><i class="fa fa-envelope"></i> Địa chỉ Email</label>
+            <input type="text" id="email" name="email" placeholder="Nhập tại đây...." required>
+            <label for="adr"><i class="fa fa-address-card-o"></i> Địa chỉ nhận hàng</label>
+            <input type="text" id="adr" name="address" placeholder="Nhập tại đây...." required>
+            <label for="city"><i class="fa fa-institution"></i> Thành phố</label>
+            <input type="text" id="city" name="city" placeholder="Nhập tại đây...." required>
+
+            <div class="row">
+              <div class="col-50">
+                <label for="phone">Số điện thoại</label>
+                <input type="text" id="phone" name="phone" placeholder="Nhập tại đây...." required>
+              </div>
+              <div class="col-50">
+                <label for="note">Ghi chú (Nếu có)</label>
+                <input type="text" id="note" name="note" placeholder="Nhập tại đây....">
+              </div>
+            </div>
+          </div>
+
+
+
+          
+        </div>
+        <label>
+          <input type="checkbox" checked="checked" name="sameadr"> Địa chỉ giao hàng giống như địa chỉ thanh toán
+        </label>
+        <input type="submit" value="HOÀN THÀNH THANH TOÁN" class="btn">
+      </form>
+    </div>
+  </div>
+  <div class="col-35">
+    <div class="container">
+      <h4>Đơn đặt hàng <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
+      <p><a href="#">Sản phẩm 1</a> <span class="price">$15</span></p>
+      <p><a href="#">Sản phẩm 2</a> <span class="price">$5</span></p>
+      <p><a href="#">Sản phẩm 3</a> <span class="price">$8</span></p>
+      <p><a href="#">Sản phẩm 4</a> <span class="price">$2</span></p>
+      <hr>
+      <p>Tổng cộng <span class="price" style="color:black"><b>$30</b></span></p>
+    </div>
+  </div>
+</div>
+<script>
+    // Giả sử giỏ hàng đã được lưu trong localStorage dưới dạng JSON (bạn có thể thay đổi cách lưu trữ)
+    const cart = [
+        { name: "Sản phẩm 1", price: 15.00 },
+        { name: "Sản phẩm 2", price: 10.00 },
+        { name: "Sản phẩm 3", price: 5.00 },
+        { name: "Sản phẩm 4", price: 8.00 }
+    ];
+
+    // Hàm hiển thị các sản phẩm trong giỏ hàng
+    function displayCartItems() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        cartItemsContainer.innerHTML = ''; // Xóa các phần tử hiện tại
+
+        let totalPrice = 0;
+        cart.forEach(item => {
+            const cartItemDiv = document.createElement('div');
+            cartItemDiv.classList.add('cart-item');
+            cartItemDiv.innerHTML = `
+                <span>${item.name}</span>
+                <span class="price">$${item.price.toFixed(2)}</span>
+            `;
+            cartItemsContainer.appendChild(cartItemDiv);
+            totalPrice += item.price;
+        });
+
+        // Cập nhật tổng giá trị giỏ hàng
+        const totalPriceElement = document.getElementById('total-price');
+        totalPriceElement.textContent = `$${totalPrice.toFixed(2)}`;
+    }
+
+    // Hiển thị các sản phẩm khi trang tải
+    window.onload = displayCartItems;
+</script>
+    </main>
+    <footer>
+      <div class="container1">
+          <div class="sec aboutus">
+              <h2>Về chúng tôi</h2>
+              <p>
+                  Jellycat là một công ty nổi tiếng toàn cầu, chuyên thiết kế và sản xuất các món đồ chơi nhồi bông cao cấp, đặc biệt là những chú thú nhồi bông dễ thương và độc đáo. Được thành lập vào năm 1999 tại London, Jellycat đã nhanh chóng chiếm được cảm tình của khách hàng trên toàn thế giới nhờ vào chất lượng vượt trội và sự sáng tạo không ngừng. 
+                  Với cam kết phát triển bền vững và trách nhiệm đối với cộng đồng, Jellycat tiếp tục khẳng định vị thế vững chắc trong ngành công nghiệp đồ chơi nhồi bông.
+              </p>
+              <ul class="sci">
+                  <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                  <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                  <li><a href="#"><i class="fa-brands fa-tiktok"></i></a></li>
+                  <li><a href="#"><i class="fa-solid fa-x"></i></a></li>
+
+              </ul>
+          </div>
+          <div class="sec quicklinks">
+              <h2>Tin tức</h2>
+              <ul>
+                  
+                  <li>
+                      <a href="https://lifestyle.znews.vn/jellycat-la-gi-ma-duoc-lo-lem-chao-yeu-thich-post1500529.html">Hết Labubu đến Jellycat gây sốt</a>
+                  </li>
+
+                  <li>
+                      <a href="https://vnexpress.net/chu-cho-de-thuong-nhat-the-gioi-bi-nham-la-gau-bong-4013339.html">Mê gấu bông "biết đi" nên mình chọn mua Jellycat: Trải nghiệm siêu chill</a>
+                  </li>
+                  
+                  <li>
+                      <a href="https://vietcetera.com/vn/anh-chang-thu-gian-bieu-tuong-moi-cua-loi-song-cu-chill-di">Chill Noel Guy: Hãy mua gấu bông</a>
+                  </li>
+
+                  <li>
+                      <a href="https://cany.vn/blog/gau-bong-jellycat-co-gi-thu-vi-ma-em-pam-yeu-oi-lai-me-den-vay">Gấu bông Pamyeuoi có gì đặc biệt?</a>
+                  </li>
+              </ul>
+
+          </div>
+
+          <div class="sec contact">
+              <h2>Liên hệ</h2>
+              <ul class="info">
+                  <li>
+                      <span><i class="fa-solid fa-phone"></i></span>
+                      <p><a href="tel:+12345678">+ 123 456 78</a></p>
+                  </li>
+                  <li>
+                      <span><i class="fa-regular fa-envelope"></i></span>
+                      <p><a href="mailto:ptudtmdt@gmail.com">ptudtmdt@gmail.com</a></p>
+                  </li>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125428.95859731767!2d106.52416244335936!3d10.761053200000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ee4595019ad%3A0xf2a1b15c6af2c1a6!2zxJDhuqFpIGjhu41jIEtpbmggdOG6vyBUUC4gSOG7kyBDaMOtIE1pbmggKFVFSCkgLSBDxqEgc-G7nyBC!5e0!3m2!1svi!2s!4v1733408848189!5m2!1svi!2s" width="350" height="225" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              </ul>
+          </div>
+      </div>
+  </footer>
+  <div class="copyrightText">
+      <p>© Jellycat Limited 2024
+
+          All rights reserved</p>
+  </div>
+
+  <script>
+    // Hàm JavaScript để hiển thị alert khi nhấn "Tiếp tục thanh toán"
+    function showAlert() {
+        alert("Đặt hàng thành công!");
+        return false;  // Ngừng hành động gửi form để bạn có thể thử nghiệm với alert
+    }
+</script>
+</body>
+</body>
+</html>
