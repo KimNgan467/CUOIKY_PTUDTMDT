@@ -1,0 +1,418 @@
+<html>
+<head>
+    <title>CUOI KY PTUD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex; 
+            flex-direction: column; /* Xếp các phần tử theo chiều dọc */
+            min-height: 100vh;
+        }
+    /*Chỉnh phần Header*/
+        header {
+            background-color: #05719D;
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header img {
+            height: 40px;
+        }
+    /*Phần Menu*/
+        .header-left a {
+            text-decoration: none;
+            color: #D7F9FD;
+            margin-right:50px;
+            position: relative;
+            transition: all 0.3s ease;
+            padding-top: 10px;
+        }
+    /*Thêm dấu gạch dưới cho Menu khi di chuột vào*/
+        .header-left a::before { 
+            content: "";
+            position: absolute;
+            bottom: 0; 
+            left: 0;
+            width: 100%;
+            height: 2px; 
+            background-color: transparent; 
+            transition: background-color 0.3s ease; 
+        }
+        .header-left a:hover::before {
+            background-color: #A0D5E8; 
+        }
+        .header-left a:hover {
+            transform: scale(1.05);  
+            color: #A0D5E8;
+        }
+    /*Icon*/
+        .header-right {
+            display: flex;
+        }
+        .header-right i {
+            color: #D7F9FD;
+            margin: 0 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+            padding: 10px;
+        }
+        .header-right i:hover {
+            color: #A0D5E8;
+        }
+    /* Thanh tìm kiếm*/
+        .search-bar {
+            display: flex;
+        }
+        .search-bar input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 150px;
+        }
+        .search-bar button {
+            background-color: #05719D;
+            color: white;
+            border: none;
+            padding: 2px 5px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+    /*Chỉnh drop-down cho sản phẩm*/
+        .drop-down {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .detail {
+            display: none;
+            position: absolute;
+            background-color: #D7F9FD;
+            box-shadow: 0 8px 16px #05719D;
+        }
+        .drop-down:hover .detail{
+            display: block; 
+        }
+        .detail a{
+            color: #05719D;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .detail a:hover{
+            color:#05719D;
+            cursor:pointer;
+        }
+    /*Chỉnh sửa phần giữa trang web*/
+        main {
+            padding: 20px;
+            flex: 1;
+            text-align: center;
+        }
+    /*Hiệu ứng tự động chuyển của ảnh*/
+        #image-slider {
+            width: 100%; 
+            margin: 0 auto; 
+        }
+        #image-slider img {
+            width: 100%;
+            height: auto;
+        }
+    /*Chỉnh dòng Best-seller và Nút xem thêm*/
+        .best-seller {
+            display: flex; 
+            justify-content: space-between; 
+            margin-top:10px;
+        }
+        .best-seller p {
+            color: #05719D;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .best-seller a {
+            color: #05719D;
+            text-decoration: none;
+            border: 2px solid #05719D; /* Refined border */
+            padding: 1px 7px;
+            display: flex;
+            align-items: center;
+        }
+        .best-seller a:hover {
+            background-color: #05719D;
+            color: #A0D5E8;
+        }
+    /*Chỉnh card sản phẩm*/
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+            padding: 20px;
+        }
+        .product-card {
+            border: none;
+            overflow: hidden;
+            position: relative;
+        }
+        .product-card:hover {
+            padding: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--text-color);
+            border-radius: 5px;
+            transition: 0.4s;
+            cursor: pointer;
+        }
+    /*Hiện chữ Best-Seller trên card sản phẩm*/
+        .best-seller-label {
+            position: absolute;
+            top:10px;
+            left:10px;
+            border: 1px solid #05719D; /* Border color */
+            color: #05719D; /* Text color */
+            padding: 2px 5px; /* Padding for the label */
+            border-radius: 5px; /* Rounded corners */
+            margin-bottom: 5px; /* Add some space below the label */
+            z-index:1;
+            text-decoration: none;
+            background-color: white;
+        }
+    /*Thêm hiệu ứng chuyển ảnh và hover cho card*/
+    /*Ảnh 1*/
+        .image-hover1 {
+            width: 300px; /* Chỉ định chiều rộng */
+            height: 300px; /* Chỉ định chiều cao */
+            background-image: url('./Ảnh/Bunny\ Front.jpg'); /* Ảnh nền ban đầu */
+            background-size:cover; /* Bao phủ toàn bộ khu vực của phần tử */
+            transition: background 0,5s ease-in-out; /* Chuyển tiếp mượt mà */
+        }
+        .image-hover1:hover {
+            background-image: url('./Ảnh/Bunny\ Left.jpg'); /* Thay đổi khi di chuột qua */
+        }
+    /*Ảnh 2*/
+        .image-hover2 {
+            width: 300px; 
+            height: 300px; 
+            background-image: url('./Ảnh/Rabbit\ Front.jpg'); /* Ảnh nền ban đầu */
+            background-size:cover; /* Bao phủ toàn bộ khu vực của phần tử */
+            transition: background 0,5s ease-in-out; /* Chuyển tiếp mượt mà */
+        }
+        .image-hover2:hover {
+            background-image: url('./Ảnh/Rabbit\ Left.jpg'); /* Thay đổi khi di chuột qua */
+        }
+    /*Ảnh 3*/
+        .image-hover3 {
+            width: 300px; /* Chỉ định chiều rộng */
+            height: 300px; /* Chỉ định chiều cao */
+            background-image: url('./Ảnh/Bear\ Front.jpg'); /* Ảnh nền ban đầu */
+            background-size:cover; /* Bao phủ toàn bộ khu vực của phần tử */
+            transition: background 0,5s ease-in-out; /* Chuyển tiếp mượt mà */
+        }
+        .image-hover3:hover {
+            background-image: url('./Ảnh/Bear\ Left.jpg'); /* Thay đổi khi di chuột qua */
+        }
+    /*Ảnh 4*/
+        .image-hover4 {
+            width: 300px; /* Chỉ định chiều rộng */
+            height: 300px; /* Chỉ định chiều cao */
+            background-image: url('./Ảnh/Dragon\ Front.jpg'); /* Ảnh nền ban đầu */
+            background-size:cover; /* Bao phủ toàn bộ khu vực của phần tử */
+            transition: background 0,5s ease-in-out; /* Chuyển tiếp mượt mà */
+        }
+        .image-hover4:hover {
+            background-image: url('./Ảnh/Dragon\ Left.jpg'); /* Thay đổi khi di chuột qua */
+        }
+    /*Ảnh 5*/
+        .image-hover5 {
+            width: 300px; /* Chỉ định chiều rộng */
+            height: 300px; /* Chỉ định chiều cao */
+            background-image: url('./Ảnh/Otter\ Right.jpg'); /* Ảnh nền ban đầu */
+            background-size:cover; /* Bao phủ toàn bộ khu vực của phần tử */
+            transition: background 0,5s ease-in-out; /* Chuyển tiếp mượt mà */
+        }
+        .image-hover5:hover {
+            background-image: url('./Ảnh/Otter\ Front.jpg'); /* Thay đổi khi di chuột qua */
+        }
+    /*Ảnh 6*/
+        .image-hover6 {
+            width: 300px; /* Chỉ định chiều rộng */
+            height: 300px; /* Chỉ định chiều cao */
+            background-image: url('./Ảnh/Turtle\ Front.jpg'); /* Ảnh nền ban đầu */
+            background-size:cover; /* Bao phủ toàn bộ khu vực của phần tử */
+            transition: background 0,5s ease-in-out; /* Chuyển tiếp mượt mà */
+        }
+        .image-hover6:hover {
+            background-image: url('./Ảnh/Turtle\ Left.jpg'); /* Thay đổi khi di chuột qua */
+        }
+    /*Chỉnh chữ trong card sản phẩm*/
+        .product-info {
+            padding: 10px;
+        }
+        .product-info h3 {
+            margin-top: 0;
+        }
+        .product-info p {
+            color: #777;
+            margin-bottom: 0;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px; 
+        }
+        ::-webkit-scrollbar-track {
+            background: white; 
+            border-radius: 10px; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgb(172, 170, 170); 
+            border-radius: 10px; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: grey; 
+        }
+
+        .div-item {
+            display: inline-block;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+            <img src="./Ảnh/Logo.png">
+        <div class="header-left">
+            <a href="#"><strong>TRANG CHỦ</strong></a>
+            <div class="drop-down">
+            <a href="Danhmuc (1).html"><strong>SẢN PHẨM</strong></a>
+                <div class="detail">
+                    <a href="#"><strong>ANIMALS</strong></a>
+                    <a href="#"><strong>BAGS & CHARMS</strong></a>
+                    <a href="#"><strong>AMUSEABLES</strong></a>
+                </div>
+            </div>
+            <a href="#"><strong>THANH TOÁN</strong></a>
+            <a href="news.html"><strong>TIN TỨC</strong></a>
+        </div>
+        <div class="header-right">
+            <div class="search-bar">
+                <form action="#" method="get">
+                    <input type="text" name="timkiem" placeholder="Tìm kiếm...">
+                    <button type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+                <a href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+                <a href="register.html"><i class="fa fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="image-slider">
+            <img src="./Ảnh/Christmas Time.jpg" alt="Ảnh 1">
+            <img src="./Ảnh/Banner 1.png" alt="Ảnh 2">
+            <img src="./Ảnh/Banner 2.png" alt="Ảnh 3">
+        </div>
+        <div class="best-seller">
+            <p><strong>BEST-SELLERS</strong></p>
+            <a href="https://www.example.com" class="button">Xem thêm</a>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+            <a href="#">
+                <div class="image-hover1">
+                    <span class="best-seller-label">BEST-SELLER</span>
+                </div>
+            </a>
+                <div class="product-info">
+                    <h3>BASHFUL BEIGE BUNNY</h3>
+                    <p>$15.00</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <a href="#">
+                    <div class="image-hover2">
+                        <span class="best-seller-label">BEST-SELLER</span>
+                    </div>
+                </a>
+                <div class="product-info">
+                    <h3>SMUDGE RABBIT</h3>
+                    <p>$23.00</p>
+                </div>
+            </div>
+            <div class="product-card">
+            <a href="#">
+                <div class="image-hover3">
+                    <span class="best-seller-label">BEST-SELLER</span>
+                </div>
+            </a>
+                <div class="product-info">
+                    <h3>BARTHOLOMEW BEAR</h3>
+                    <p>$23.00</p>
+                </div>
+            </div>
+            <div class="product-card">
+            <a href="#">
+                <div class="image-hover4">
+                    <span class="best-seller-label">BEST-SELLER</span>
+                </div>
+            </a>
+                <div class="product-info">
+                    <h3>SNOW DRAGON</h3>
+                    <p>$35.00</p>
+                </div>
+            </div>
+            <div class="product-card">
+            <a href="#">
+                <div class="image-hover5">
+                    <span class="best-seller-label">BEST-SELLER</span>
+                </div>
+            </a>
+                <div class="product-info">
+                    <h3>BROOKE OTTER</h3>
+                    <p>$35.00</p>
+                </div>
+            </div>
+             <div class="product-card">
+            <a href="#">
+                <div class="image-hover6">
+                    <span class="best-seller-label">BEST-SELLER</span>
+                </div>
+            </a>
+                <div class="product-info">
+                    <h3>TIMMY TURTLE</h3>
+                    <p>$48.00</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        const slider = document.getElementById('image-slider');
+        const images = slider.querySelectorAll('img');
+        let currentImage = 0;
+
+        function showImage(index) {
+            images.forEach(img => img.style.display = 'none');
+            images[index].style.display = 'block';
+        }
+
+        setInterval(() => {
+            currentImage = (currentImage + 1) % images.length;
+            showImage(currentImage);
+        }, 3000); // 3000 milliseconds = 3 seconds
+
+        showImage(currentImage); // Show the first image initially
+
+        const searchForm = document.querySelector('.search-bar form');
+        const searchInput = searchForm.querySelector('input[type="text"]');
+
+        searchForm.addEventListener('submit', function(event) {
+            if (searchInput.value.trim() === '') {
+                event.preventDefault(); // Ngăn chặn gửi biểu mẫu
+                alert('Vui lòng nhập từ khóa tìm kiếm!');
+            }
+        });
+    </script>
+</body>
+</html>
