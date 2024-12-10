@@ -195,3 +195,93 @@ header img {
 
 
 
+@media (max-width: 1200px) {
+   .form-container form {
+      width: 80%; /* Giảm chiều rộng form */
+      padding: 15px; /* Giảm padding */
+   }
+
+   .form-container form h3 {
+      font-size: 25px; /* Giảm kích thước tiêu đề */
+   }
+
+   .form-container form input {
+      font-size: 14px; /* Giảm kích thước chữ */
+   }
+
+   .form-container form .form-btn {
+      width: 50%; /* Tăng chiều rộng nút trên màn hình vừa */
+   }
+}
+
+@media (max-width: 768px) {
+   header {
+      flex-direction: column; /* Thay đổi header thành cột */
+      align-items: flex-start;
+   }
+
+   .header-left a {
+      margin-right: 20px; /* Giảm khoảng cách giữa các liên kết */
+      font-size: 14px; /* Giảm kích thước chữ */
+   }
+
+   .header-right i {
+      font-size: 1em; /* Giảm kích thước biểu tượng */
+   }
+
+   .form-container {
+      padding: 10px; /* Giảm khoảng cách tổng thể */
+   }
+
+   .form-container form {
+      width: 90%; /* Tăng chiều rộng form */
+   }
+
+   .form-container form h3 {
+      font-size: 22px; /* Giảm kích thước tiêu đề */
+   }
+
+   .form-container form .form-btn {
+      width: 60%; /* Nút rộng hơn để dễ bấm */
+   }
+}
+
+@media (max-width: 450px) {
+   html {
+      font-size: 50%; /* Giảm font-size gốc */
+   }
+
+   header img {
+      height: 30px; /* Giảm kích thước logo */
+   }
+
+   .header-left a {
+      font-size: 12px; /* Giảm kích thước chữ hơn nữa */
+   }
+
+   .header-right i {
+      font-size: 0.9em; /* Giảm kích thước biểu tượng hơn nữa */
+   }
+
+   .form-container form h3 {
+      font-size: 20px; /* Tiêu đề nhỏ hơn */
+   }
+
+   .form-container form input {
+      font-size: 12px; /* Kích thước chữ nhỏ hơn */
+      padding: 8px; /* Giảm padding trong ô nhập */
+   }
+
+   .form-container form .form-btn {
+      font-size: 14px; /* Giảm kích thước chữ trên nút */
+      padding: 8px 10px; /* Giảm padding nút */
+   }
+
+   .form-container form p {
+      font-size: 14px; /* Kích thước nhỏ hơn cho đoạn văn */
+   }
+}
+
+
+
+
