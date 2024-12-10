@@ -213,3 +213,123 @@ font-weight: 500;
    font-size: 16px;
    padding:10px;
 }
+
+
+
+@media (max-width: 1200px) {
+   header {
+      padding: 15px;
+   }
+
+   header img {
+      height: 35px; /* Giảm kích thước logo */
+   }
+
+   .header-left a {
+      margin-right: 30px; /* Giảm khoảng cách giữa các liên kết */
+      font-size: 14px; /* Giảm kích thước chữ */
+   }
+
+   .header-right i {
+      font-size: 1em; /* Giảm kích thước biểu tượng */
+   }
+
+   .form-container form {
+      width: 80%; /* Giảm chiều rộng form */
+      padding: 15px; /* Giảm padding */
+   }
+
+   .form-container form h3 {
+      font-size: 24px; /* Giảm kích thước tiêu đề */
+   }
+
+   .form-container form input,
+   .form-container form select {
+      font-size: 14px; /* Giảm kích thước chữ trong các input và select */
+   }
+
+   .form-container form .form-btn {
+      width: 50%; /* Tăng chiều rộng nút trên màn hình vừa */
+   }
+}
+
+@media (max-width: 768px) {
+   header {
+      flex-direction: column; /* Chuyển header thành cột */
+      align-items: flex-start; /* Căn các phần tử sang bên trái */
+   }
+
+   .header-left a {
+      margin-right: 20px; /* Giảm khoảng cách giữa các liên kết */
+      font-size: 12px; /* Giảm kích thước chữ hơn nữa */
+   }
+
+   .header-right i {
+      font-size: 0.9em; /* Giảm kích thước biểu tượng */
+   }
+
+   .form-container {
+      padding: 10px; /* Giảm khoảng cách tổng thể */
+   }
+
+   .form-container form {
+      width: 90%; /* Tăng chiều rộng form */
+      padding: 15px; /* Giảm padding form */
+   }
+
+   .form-container form h3 {
+      font-size: 20px; /* Tiêu đề nhỏ hơn */
+   }
+
+   .form-container form input,
+   .form-container form select {
+      font-size: 12px; /* Kích thước chữ nhỏ hơn */
+      padding: 8px; /* Giảm padding trong ô nhập */
+   }
+
+   .form-container form .form-btn {
+      font-size: 14px; /* Giảm kích thước chữ trên nút */
+      padding: 10px; /* Giảm padding nút */
+   }
+}
+
+@media (max-width: 450px) {
+   html {
+      font-size: 50%; /* Giảm font-size gốc */
+   }
+
+   header img {
+      height: 25px; /* Giảm kích thước logo */
+   }
+
+   .header-left a {
+      font-size: 10px; /* Giảm kích thước chữ hơn nữa */
+   }
+
+   .header-right i {
+      font-size: 0.8em; /* Giảm kích thước biểu tượng hơn nữa */
+   }
+
+   .form-container form {
+      width: 95%; /* Gần như chiếm toàn bộ chiều rộng màn hình */
+   }
+
+   .form-container form h3 {
+      font-size: 18px; /* Tiêu đề nhỏ hơn */
+   }
+
+   .form-container form input,
+   .form-container form select {
+      font-size: 10px; /* Kích thước chữ nhỏ hơn */
+      padding: 6px; /* Giảm padding */
+   }
+
+   .form-container form .form-btn {
+      font-size: 12px; /* Giảm kích thước chữ nút */
+      padding: 8px; /* Giảm padding nút */
+   }
+
+   .form-container form p {
+      font-size: 12px; /* Đoạn văn nhỏ hơn */
+   }
+}
