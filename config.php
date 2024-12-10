@@ -1,5 +1,5 @@
 <?php
 
-$conn = mysqli_connect('localhost','root','','card_db');
+$conn = mysqli_connect('localhost','root','','news_db');
 
 ?>
