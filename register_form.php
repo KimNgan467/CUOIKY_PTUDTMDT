@@ -2,9 +2,9 @@
 
 // Kết nối đến cơ sở dữ liệu
 $servername = "localhost";
-$username = "root"; 
-$password = ""; 
-$dbname = "userdb"; // Đổi tên nếu cần
+$username = "dieuhuyen"; 
+$password = "123456"; 
+$dbname = "register"; // Đổi tên nếu cần
 
 // Tạo kết nối
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -23,8 +23,6 @@ if (isset($_POST['submit'])) {
     $cpassword = $_POST['cpassword'];
     $usertype = $_POST['usertype'];
 
-    //Mặc định đăng ký là user//
-    $user_type = isset($_POST['user_type']) ? $_POST['user_type'] : 'user';
     // Kiểm tra xem người dùng đã tồn tại chưa
     $select = "SELECT * FROM userform WHERE email = '$email'";
 
@@ -72,45 +70,20 @@ if (isset($_POST['submit'])) {
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Đăng ký tài khoản</title>
-   <link rel="stylesheet" href="register.css">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
    <!-- Link tới file CSS tùy chỉnh -->
- 
+   <link rel="stylesheet" href="register.css">
 </head>
+
+<style>
+    
+</style>
+
 <body>
-    <header>
-            <img src="./Ảnh/Logo.png">
-        <div class="header-left">
-            <a href="#"><strong>TRANG CHỦ</strong></a>
-            <div class="drop-down">
-            <a href="#"><strong>SẢN PHẨM</strong></a>
-                <div class="detail">
-                    <a href="#"><strong>ANIMALS</strong></a>
-                    <a href="#"><strong>BAGS & CHARMS</strong></a>
-                    <a href="#"><strong>AMUSEABLES</strong></a>
-                </div>
-            </div>
-            <a href="#"><strong>THANH TOÁN</strong></a>
-            <a href="news.php"><strong>TIN TỨC</strong></a>
-        </div>
-        <div class="header-right">
-            <div class="search-bar">
-                <form action="#" method="get">
-                    <input type="text" name="timkiem" placeholder="Tìm kiếm...">
-                    <button type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </form>
-                <a href="cart.html"><i class="fa fa-shopping-cart"></i></a>
-                <a href="login_form.php"><i class="fa fa-user"></i></a>
-            </div>
-        </div>
- </header>
 
 <div class="form-container">
 
-<form name="registerForm" action="register_form.php" method="post" onsubmit="return validateName()">
+   <form action="" method="POST">
       <h3>Đăng ký ngay</h3>
       <?php
       if (isset($error)) {
@@ -119,17 +92,19 @@ if (isset($_POST['submit'])) {
          }
       }
       ?>
-      <label for="name">Tên người dùng*</label>
-      <input type="text" name="name" required placeholder="Nhập vào tên...">
-      <label for="email">Email*</label>
-      <input type="email" name="email" required placeholder="Nhập vào email...">
-      <label for="password">Mật khẩu*</label>
-      <input type="password" name="password" required placeholder="Nhập vào password...">
-      <label for="cpassword">Xác nhận mật khẩu*</label>
-      <input type="password" name="cpassword" required placeholder="Nhập lại mật khẩu...">
-      <input type="submit" name="submit" value="register now" class="form-btn">
-      <p>Bạn đã có tài khoản? <a href="login_form.php">Đăng nhập ngay</a></p>
+      <input type="text" name="name" required placeholder="Nhập tên của bạn">
+      <input type="email" name="email" required placeholder="Nhập email của bạn">
+      <input type="password" name="password" required placeholder="Nhập mật khẩu của bạn">
+      <input type="password" name="cpassword" required placeholder="Xác nhận mật khẩu">
+      <select name="usertype">
+         <option value="user">Người dùng</option>
+         <option value="admin">Quản trị viên</option>
+      </select>
+      <input type="submit" name="submit" value="Đăng ký ngay" class="form-btn">
+      <p>Đã có tài khoản? <a href="login_form.php">Đăng nhập ngay</a></p>
    </form>
-    </div>
+
+</div>
+
 </body>
 </html>

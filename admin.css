@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+#admin-heading-panel {
+    background-color: #05719d;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.left-panel {
+    font-weight: bold;
+}
+
+.right-panel a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.right-panel a:hover {
+    color: #e1e1e1;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+}
+
+.left-menu {
+    width: 280px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-right: 20px;
+}
+
+.menu-heading {
+    background: #a0d5e8;
+    color: #FFF;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.menu-items ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-items ul li {
+    line-height: 35px;
+    padding-left: 10px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+}
+
+.menu-items ul li:hover {
+    background-color: #f1f1f1;
+}
+
+.menu-items ul li a {
+    color: #333;
+    text-decoration: none;
+}
+
+.admininfo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.admin {
+    width: 100%;
+    max-width: 800px;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.admin th, .admin td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.admin th {
+    background-color: #a0d5e8;
+    color: white;
+}
+
+.button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #06719d;
+}
+
+.button:hover {
+    opacity: 0.9;
+    background-color: #066084;
+}
+.btn_delete{
+    background-color: #f44336; 
+}
+
+.btn_delete:hover {
+    background-color: #da190b;
+}
+@media (max-width: 768px) {
+    #content-wrapper {
+        flex-direction: column;
+    }
+
+    .left-menu {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    table.admin {
+        font-size: 12px; /* Kích thước chữ nhỏ hơn */
+    }
+
+    .button {
+        width: 100%; /* Nút sử dụng toàn bộ chiều rộng */
+        margin-bottom: 5px; /* Khoảng cách giữa các nút */
+        padding: 8px; /* Tăng kích thước nút trên di động */
+    }
+
+    .admininfo {
+        padding: 10px; /* Giảm padding trong admininfo */
+    }
+}
+

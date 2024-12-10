@@ -195,6 +195,10 @@ header img {
 
 
 
+
+
+
+
 @media (max-width: 1200px) {
    .form-container form {
       width: 80%; /* Giảm chiều rộng form */
@@ -281,7 +285,3 @@ header img {
       font-size: 14px; /* Kích thước nhỏ hơn cho đoạn văn */
    }
 }
-
-
-
-
