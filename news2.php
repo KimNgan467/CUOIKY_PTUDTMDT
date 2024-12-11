@@ -141,7 +141,7 @@
         <h1 class="title">Tin tức & sự kiện</h1>
         <div class="news-grid">
             <div class="news-item">
-                <a href="tintuc2.html" target="_blank">
+                <a href="tintuc2.php" target="_blank">
                     <div class="image-placeholder">
                         <img src="picture/gau-noel.jpg" alt="Tên tin tức 1">
                     </div>
