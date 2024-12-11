@@ -1,0 +1,39 @@
+[
+    {
+        "id":1,
+        "name":"Hình 1",
+        "price": 50,
+        "image": "Image/A4HOTC__36304.1.jpg"
+    },
+    {
+        "id":2,
+        "name":"Hình 2",
+        "price": 70,
+        "image": "Image/A6PRD__55137.1.jpg"
+    },
+    {
+        "id":3,
+        "name":"Hình 3",
+        "price": 50,
+        "image": "Image/A6SPS__52866.1.jpg"
+    },
+    {
+        "id":4,
+        "name":"Hình 4",
+        "price": 150,
+        "image": "Image/BARH2BR__96282.1.jpg"
+    },
+    {
+        "id":5,
+        "name":"Hình 5",
+        "price": 250,
+        "image": "Image/BAS3B__88240.1.jpg"
+    },
+    {
+        "id":6,
+        "name":"Hình 6",
+        "price": 90,
+        "image": "Image/BAS3WP__67563.1.jpg"
+    }
+   
+]

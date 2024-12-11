@@ -1,0 +1,322 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column; /* Xếp các phần tử theo chiều dọc */
+  min-height: 100vh;
+}
+main {
+  padding: 40px;
+}
+* {
+  box-sizing: border-box;
+}
+/*Chỉnh phần Header*/
+header {
+  background-color: #05719d;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+header img {
+  height: 40px;
+}
+/*Phần Menu*/
+.header-left a {
+  text-decoration: none;
+  color: #d7f9fd;
+  margin-right: 50px;
+  position: relative;
+  transition: all 0.3s ease;
+  padding-top: 10px;
+}
+/*Thêm dấu gạch dưới cho Menu khi di chuột vào*/
+.header-left a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+.header-left a:hover::before {
+  background-color: #a0d5e8;
+}
+.header-left a:hover {
+  transform: scale(1.05);
+  color: #a0d5e8;
+}
+/*Icon*/
+.header-right {
+  display: flex;
+}
+.header-right i {
+  color: #d7f9fd;
+  margin: 0 10px;
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 10px;
+}
+.header-right i:hover {
+  color: #a0d5e8;
+}
+/* Thanh tìm kiếm*/
+.search-bar {
+  display: flex;
+}
+.search-bar input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  width: 150px;
+}
+.search-bar button {
+  background-color: #05719d;
+  color: white;
+  border: none;
+  padding: 2px 5px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+/*Chỉnh drop-down cho sản phẩm*/
+.drop-down {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.detail {
+  display: none;
+  position: absolute;
+  background-color: #d7f9fd;
+  box-shadow: 0 8px 16px #05719d;
+}
+.drop-down:hover .detail {
+  display: block;
+}
+.detail a {
+  color: #05719d;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.detail a:hover {
+  color: #05719d;
+  cursor: pointer;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-35 {
+  -ms-flex: 35%; /* IE10 */
+  flex: 35%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-65 {
+  -ms-flex: 65%; /* IE10 */
+  flex: 65%;
+}
+
+.col-35,
+.col-50,
+.col-65 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: white;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+input[type="text"] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #33cee5;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background-color: #ff8204;
+}
+
+a {
+  color: #2196f3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+footer {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 50px;
+  background-color: #33cee5;
+}
+
+footer .container1 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 1.5fr 0.5fr;
+  grid-gap: 120px;
+}
+
+footer .container1 .sec h2 {
+  position: relative;
+  color: black;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+
+footer .container1 .sec p {
+  color: rgb(36, 33, 33);
+}
+
+footer .container1 .sci {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 50px);
+  gap: 40px; /* Optional: Add space between icons */
+}
+
+footer .container1 .sci li {
+  list-style: none;
+}
+
+footer .container1 .sci li a {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: #33cee5;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+footer .container1 .sci li a:hover {
+  background: #20a2b8; /* Hover effect */
+}
+
+footer .container1 .sci li a i {
+  color: black;
+  font-size: 20px;
+}
+
+footer .container1 .quicklinks {
+  position: relative;
+}
+
+footer .container1 .quicklinks ul li a {
+  color: black;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+footer .container1 .quicklinks ul li a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+footer .container1 .info {
+  list-style: none;
+}
+
+footer .container1 .info li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+footer .container1 .info li span {
+  margin-right: 10px;
+}
+
+footer .container1 .info li p a {
+  text-decoration: none;
+  color: black;
+}
+
+footer .container1 .info li p a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.copyrightText {
+  width: 100%;
+  background-color: black;
+  padding: 20px 100px 30px;
+  text-align: center;
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 15);
+}
+
+.item img {
+  height: 70px;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}

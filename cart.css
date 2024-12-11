@@ -6,12 +6,15 @@ body {
 }
 a {
     text-decoration: none;
+}
+.keepshopping {
+    text-decoration: none;
     padding: 10px 20px;
     background-color: #a0d5e8;
     color: #05719d;
     font-weight: bold;
 }
-a:hover {
+.keepshopping:hover {
     color: #a0d5e8;
     background-color: #05719d;
     font-weight: bold;
@@ -86,6 +89,13 @@ a:hover {
 }
 .buttonCheckout:hover {
     background-color: #f76d16;
+}
+.checkout {
+    color: #fff;
+}
+.checkout:hover {
+    background-color: #f76d16;
+    color: #fff;
 }
 .returnCart h1 {
     border-top: 1px solid #eee;
