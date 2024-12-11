@@ -1,31 +1,38 @@
 <html>
 <head>
-    <title>CUOI KY PTUD</title>
+    <title>TRANG CHỦ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family:Arial, Helvetica, sans-serif;
             display: flex; 
-            flex-direction: column; /* Xếp các phần tử theo chiều dọc */
+            flex-direction: column; 
             min-height: 100vh;
+            margin: 0;
         }
     /*Chỉnh phần Header*/
         header {
             background-color: #05719D;
             padding: 10px 20px;
             display: flex;
-            flex-direction: row;
             justify-content: space-between;
             align-items: center;
+            position: fixed;
+            top:0;
+            left:0;
+            width: 100%;
+            z-index:100;
         }
         header img {
             height: 40px;
+            max-width: 10%;   
         }
     /*Phần Menu*/
         .header-left a {
             text-decoration: none;
             color: #D7F9FD;
-            margin-right:50px;
+            margin-right:80px;
             position: relative;
             transition: all 0.3s ease;
             padding-top: 10px;
@@ -90,6 +97,7 @@
             position: absolute;
             background-color: #D7F9FD;
             box-shadow: 0 8px 16px #05719D;
+            z-index: 10;
         }
         .drop-down:hover .detail{
             display: block; 
@@ -109,54 +117,87 @@
         main {
             padding: 20px;
             flex: 1;
+            flex-direction: column;
             text-align: center;
         }
-    /*Hiệu ứng tự động chuyển của ảnh*/
-        #image-slider {
-            width: 100%; 
-            margin: 0 auto; 
-        }
-        #image-slider img {
+    /*Hiệu ứng video*/
+        .TVC {
+            position: relative;
             width: 100%;
-            height: auto;
+            height: 100vh; 
+            overflow: hidden; 
+            margin:0;
+            z-index: 0;
         }
-    /*Chỉnh dòng Best-seller và Nút xem thêm*/
+        .TVC video {
+            position: absolute; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+    /*Hiệu ứng chữ trên video*/
+        .overlay {
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1; /* Ensure it's on top of the video */
+            color: black; 
+        }
+        .overlay h2 {
+            margin-bottom: 10px;
+        }
+        .overlay button {
+            font-size: large;
+            background-color: #05719D;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            cursor: pointer;
+        }
+    /*Chỉnh dòng Best-seller/*/
         .best-seller {
-            display: flex; 
-            justify-content: space-between; 
-            margin-top:10px;
-        }
-        .best-seller p {
-            color: #05719D;
-            font-weight: bold;
-            font-size: 20px;
+            display: flex;
+            justify-content: center; 
+            margin-top: 10px;
         }
         .best-seller a {
-            color: #05719D;
-            text-decoration: none;
-            border: 2px solid #05719D; /* Refined border */
-            padding: 1px 7px;
-            display: flex;
-            align-items: center;
+            color: Black;
+            font-weight: bold;
+            font-size: 40px; 
+            font-family:'Times New Roman', Times, serif;
+            text-decoration: none; 
+            cursor: pointer; 
         }
         .best-seller a:hover {
-            background-color: #05719D;
-            color: #A0D5E8;
+            color: #A0D5E8; 
+            text-decoration: underline; 
+        }
+        .best-seller-container {
+            display: flex;
+            flex-direction: column; /* sắp xếp theo cột */
+            align-items: center; /* căn giữa theo chiều ngang */
+        }
+
+        .best-seller-spacer { /* tạo khoảng cách */
+            height: 50px; /* điều chỉnh giá trị này để thay đổi khoảng cách */
         }
     /*Chỉnh card sản phẩm*/
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 20px;
-            padding: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));;
+            grid-gap: 10px;
         }
         .product-card {
             border: none;
-            overflow: hidden;
             position: relative;
+            width: 280px;
+            box-sizing: border-box;
         }
         .product-card:hover {
-            padding: 10px;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
             border: 1px solid var(--text-color);
             border-radius: 5px;
@@ -168,11 +209,11 @@
             position: absolute;
             top:10px;
             left:10px;
-            border: 1px solid #05719D; /* Border color */
-            color: #05719D; /* Text color */
-            padding: 2px 5px; /* Padding for the label */
-            border-radius: 5px; /* Rounded corners */
-            margin-bottom: 5px; /* Add some space below the label */
+            border: 1px solid #05719D; 
+            color: #05719D; 
+            padding: 2px 5px; 
+            border-radius: 5px; 
+            margin-bottom: 5px; 
             z-index:1;
             text-decoration: none;
             background-color: white;
@@ -180,69 +221,91 @@
     /*Thêm hiệu ứng chuyển ảnh và hover cho card*/
     /*Ảnh 1*/
         .image-hover1 {
-            width: 300px; /* Chỉ định chiều rộng */
-            height: 300px; /* Chỉ định chiều cao */
-            background-image: url('./Ảnh/Bunny\ Front.jpg'); /* Ảnh nền ban đầu */
-            background-size:cover; /* Bao phủ toàn bộ khu vực của phần tử */
-            transition: background 0,5s ease-in-out; /* Chuyển tiếp mượt mà */
+            width: 100%; 
+            height: 280px; 
+            background-image: url('./Ảnh/Banana\ Front.jpg'); 
+            background-size:cover;
+            transition: background 0,5s ease-in-out; 
         }
         .image-hover1:hover {
-            background-image: url('./Ảnh/Bunny\ Left.jpg'); /* Thay đổi khi di chuột qua */
+            background-image: url('./Ảnh/Banana\ Stand.jpg'); 
         }
     /*Ảnh 2*/
         .image-hover2 {
-            width: 300px; 
-            height: 300px; 
-            background-image: url('./Ảnh/Rabbit\ Front.jpg'); /* Ảnh nền ban đầu */
-            background-size:cover; /* Bao phủ toàn bộ khu vực của phần tử */
-            transition: background 0,5s ease-in-out; /* Chuyển tiếp mượt mà */
+            width: 100%; 
+            height: 280px; 
+            background-image: url('./Ảnh/Jack\ Front.jpg'); 
+            background-size:cover;
+            transition: background 0,5s ease-in-out; 
         }
         .image-hover2:hover {
-            background-image: url('./Ảnh/Rabbit\ Left.jpg'); /* Thay đổi khi di chuột qua */
+            background-image: url('./Ảnh/Jack\ Left.jpg'); 
         }
     /*Ảnh 3*/
         .image-hover3 {
-            width: 300px; /* Chỉ định chiều rộng */
-            height: 300px; /* Chỉ định chiều cao */
-            background-image: url('./Ảnh/Bear\ Front.jpg'); /* Ảnh nền ban đầu */
-            background-size:cover; /* Bao phủ toàn bộ khu vực của phần tử */
-            transition: background 0,5s ease-in-out; /* Chuyển tiếp mượt mà */
+            width: 100%; 
+            height: 280px; 
+            background-image: url('./Ảnh/Chocolate\ Front.jpg'); 
+            background-size:cover; 
+            transition: background 0,5s ease-in-out; 
         }
         .image-hover3:hover {
-            background-image: url('./Ảnh/Bear\ Left.jpg'); /* Thay đổi khi di chuột qua */
+            background-image: url('./Ảnh/Chocolate\ Left.jpg'); 
         }
     /*Ảnh 4*/
         .image-hover4 {
-            width: 300px; /* Chỉ định chiều rộng */
-            height: 300px; /* Chỉ định chiều cao */
-            background-image: url('./Ảnh/Dragon\ Front.jpg'); /* Ảnh nền ban đầu */
-            background-size:cover; /* Bao phủ toàn bộ khu vực của phần tử */
-            transition: background 0,5s ease-in-out; /* Chuyển tiếp mượt mà */
+            width:100%; 
+            height: 280px; 
+            background-image: url('./Ảnh/Dragon\ Front.jpg'); 
+            background-size:cover; 
+            transition: background 0,5s ease-in-out; 
         }
         .image-hover4:hover {
-            background-image: url('./Ảnh/Dragon\ Left.jpg'); /* Thay đổi khi di chuột qua */
+            background-image: url('./Ảnh/Dragon\ Left.jpg'); 
         }
     /*Ảnh 5*/
         .image-hover5 {
-            width: 300px; /* Chỉ định chiều rộng */
-            height: 300px; /* Chỉ định chiều cao */
-            background-image: url('./Ảnh/Otter\ Right.jpg'); /* Ảnh nền ban đầu */
-            background-size:cover; /* Bao phủ toàn bộ khu vực của phần tử */
-            transition: background 0,5s ease-in-out; /* Chuyển tiếp mượt mà */
+            width: 100%; 
+            height: 280px; 
+            background-image: url('./Ảnh/Croissant\ Front.jpg'); 
+            background-size:cover; 
+            transition: background 0,5s ease-in-out; 
         }
         .image-hover5:hover {
-            background-image: url('./Ảnh/Otter\ Front.jpg'); /* Thay đổi khi di chuột qua */
+            background-image: url('./Ảnh/Croissant\ Left.jpg');
         }
     /*Ảnh 6*/
         .image-hover6 {
-            width: 300px; /* Chỉ định chiều rộng */
-            height: 300px; /* Chỉ định chiều cao */
-            background-image: url('./Ảnh/Turtle\ Front.jpg'); /* Ảnh nền ban đầu */
-            background-size:cover; /* Bao phủ toàn bộ khu vực của phần tử */
-            transition: background 0,5s ease-in-out; /* Chuyển tiếp mượt mà */
+            width: 100%; 
+            height: 280px; 
+            background-image: url('./Ảnh/Turtle\ Front.jpg'); 
+            background-size:cover; 
+            transition: background 0,5s ease-in-out; 
         }
         .image-hover6:hover {
-            background-image: url('./Ảnh/Turtle\ Left.jpg'); /* Thay đổi khi di chuột qua */
+            background-image: url('./Ảnh/Turtle\ Left.jpg'); 
+        }
+    /*Ảnh 7*/
+        .image-hover7 {
+            width: 100%; 
+            height: 280px; 
+            background-image: url('./Ảnh/Pup\ Bag\ Charm\ Front.jpg'); 
+            background-size:cover; 
+            transition: background 0,5s ease-in-out; 
+        }
+        .image-hover7:hover {
+            background-image: url('./Ảnh/Pup\ Bag\ Charm\ Left.jpg'); 
+        }
+    /*Ảnh 8*/
+        .image-hover8 {
+            width: 100%; 
+            height: 280px; 
+            background-image: url('./Ảnh/Napping\ Cat\ Front.jpg'); 
+            background-size:cover; 
+            transition: background 0,5s ease-in-out; 
+        }
+        .image-hover8:hover {
+            background-image: url('./Ảnh/Napping\ Cat\ Left.jpg'); 
         }
     /*Chỉnh chữ trong card sản phẩm*/
         .product-info {
@@ -255,7 +318,7 @@
             color: #777;
             margin-bottom: 0;
         }
-
+    /*Thanh cuộn*/
         ::-webkit-scrollbar {
             width: 10px; 
         }
@@ -270,11 +333,195 @@
         ::-webkit-scrollbar-thumb:hover {
             background: grey; 
         }
-
-        .div-item {
-            display: inline-block;
-            margin: 10px;
+    /*Slogan*/
+        .slogan {
+            background-color: white;
+            text-align: center;
+            padding: 60px 0;
+            margin: 20px 0;
+            position: relative; /* Added for positioning quotes */
+            font-size:large;
         }
+        .quote-left {
+            position: absolute;
+            top: -25px;
+            left: 0;
+            font-size: 6em; /* Adjust size as needed */
+            color: #FFA500;
+            transform: rotate(-15deg); /* Adjust rotation as needed */
+        }
+        .quote-right {
+            position: absolute;
+            bottom: -85px;
+            right: 0;
+            font-size: 6em; /* Adjust size as needed */
+            color: #FFA500;
+            transform: rotate(15deg); /* Adjust rotation as needed */
+        }
+        .slogan-content { /* Container for slogan text */
+            text-align: center;
+            margin:0 auto;
+            width:80%;
+            padding: 30px;
+        }
+        .slogan-content span {
+            display: block; /* Makes each span a block element for better spacing */
+            margin-bottom: 20px;
+        }
+        .slogan-title {
+            font-size: 25px; /* slightly increased font size */
+            text-decoration:solid;
+        }
+        .slogan-text {
+            text-align: center;
+            font-size: 20px; /* slightly increased font size */
+        }
+    /*Tin tức*/
+        .christmas-container {
+            display: flex;
+            align-items: center; /* Vertically center content */
+            width: 100%;
+            max-width: 1220px;
+            margin: 0 auto; /* Horizontally center container */
+            background-color: #D7F9FD;
+            color: black;
+            padding: 40px;
+        }
+        .text-content-wrapper { /* Styles for the new wrapper */
+            display: flex;
+            flex-direction: column;
+            flex: 1; /* Allow the text content to take up available space */
+            padding: 20px;
+        }
+        .text-content {
+            text-align: left; /* Center text within the text-content div */
+            margin: 10px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .text-content h1 {
+            font-size:40px;
+        }
+        .text-content p {
+            font-size:20px;
+            margin-bottom: 30px;
+        }
+        .button {
+            background-color: #05719D;
+            color: white;
+            padding: 10px 15px; /* Adjust padding as needed */
+            border: none;
+            cursor: pointer;
+            font-size: 16px; /* Adjust font size as needed */
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+        .button:hover {
+            padding: 15px 25px; /* Tăng kích thước lên 110% */
+            box-shadow: 0px 0px 10px rgba(17, 124, 247, 0.5); /* Thêm bóng đổ để tạo hiệu ứng nổi bật */
+        }
+        .image-content {
+            flex: 1;
+            display: flex;
+            justify-content: center; /* Center image horizontally */
+        }
+        .image-content img {
+            max-width: 100%;
+            height: auto;
+        }
+    /*Footer*/
+        footer {
+            max-width: 1200px;
+            height: auto;
+            padding: 100px;
+            background-color: #33cee5;
+        }
+        footer .container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 3fr 1.5fr 0.5fr;
+            grid-gap: 120px;
+        }
+        footer .container .sec h2 {
+            position: relative;
+            color: black;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 30px;
+        }
+        footer .container .sec p {
+            color: rgb(36, 33, 33);
+        }
+        footer .container .sci {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 50px);
+            gap: 40px; /* Optional: Add space between icons */
+        }
+        footer .container .sci li {
+            list-style: none;
+        }
+        footer .container .sci li a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: #33cee5;
+            display: grid;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        footer .container .sci li a:hover {
+            background: #20a2b8; /* Hover effect */
+        }
+        footer .container .sci li a i {
+            color: black;
+            font-size: 20px;
+        }
+        footer .container .quicklinks {
+            position: relative;
+        }
+        footer .container .quicklinks ul li a {
+            color: black;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        footer .container .quicklinks ul li a:hover {
+            text-decoration: underline;
+            color: white;
+        }
+        footer .container .info {
+            list-style: none;
+        }
+        footer .container .info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        footer .container .info li span {
+            margin-right: 10px;
+        }
+        footer .container .info li p a {
+            text-decoration: none;
+            color: black;
+        }
+        footer .container .info li p a:hover {
+            text-decoration: underline;
+            color: white;
+        }
+        .copyrightText {
+            width: 100%;
+            background-color: black;
+            padding: 20px 100px 30px;
+            text-align: center;
+            color: white;
+            border: 1px solid rgba(0, 0, 0, 15);
+        }
+    /*Responsive*/
     </style>
 </head>
 <body>
@@ -283,40 +530,48 @@
         <div class="header-left">
             <a href="#"><strong>TRANG CHỦ</strong></a>
             <div class="drop-down">
-            <a href="Danhmuc (1).html"><strong>SẢN PHẨM</strong></a>
+            <a href="#"><strong>SẢN PHẨM</strong></a>
                 <div class="detail">
-                    <a href="#"><strong>ANIMALS</strong></a>
-                    <a href="#"><strong>BAGS & CHARMS</strong></a>
-                    <a href="#"><strong>AMUSEABLES</strong></a>
+                    <a href="danhmucanimals.html"><strong>ANIMALS</strong></a>
+                    <a href="danhmucbags&charms.html"><strong>BAGS & CHARMS</strong></a>
+                    <a href="danhmucamuseables.html"><strong>AMUSEABLES</strong></a>
+                    <a href="danhmucgifts.html"><strong>GIFTS</strong></a>
                 </div>
             </div>
-            <a href="#"><strong>THANH TOÁN</strong></a>
-            <a href="news.html"><strong>TIN TỨC</strong></a>
+            <a href="#"><strong>TIN TỨC</strong></a>
         </div>
         <div class="header-right">
             <div class="search-bar">
-                <form action="#" method="get">
-                    <input type="text" name="timkiem" placeholder="Tìm kiếm...">
-                    <button type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </form>
-                <a href="cart.html"><i class="fa fa-shopping-cart"></i></a>
-                <a href="register.html"><i class="fa fa-user"></i></a>
+                <form id="searchForm">
+                    <input type="text" id="searchInput" placeholder="Nhập từ khóa...">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                  </form>
+                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                <a href="#"><i class="fa fa-user"></i></a>
             </div>
         </div>
     </header>
 
     <main>
-        <div id="image-slider">
-            <img src="./Ảnh/Christmas Time.jpg" alt="Ảnh 1">
-            <img src="./Ảnh/Banner 1.png" alt="Ảnh 2">
-            <img src="./Ảnh/Banner 2.png" alt="Ảnh 3">
+        <div class="TVC">
+            <video autoplay loop muted>
+                <source src="./Ảnh/TVC.mp4" type="video/mp4">
+            </video>
+            <div class="overlay">
+                <h2>Share the gift of joy this Christmas</h2>
+                <a href="danhmucgifts.html">
+                <button>Explore Christmas</button>
+                </a>
+            </div>
         </div>
+        </div>
+            <div class="best-seller-container">
+        <div class="best-seller-spacer"></div>  <!-- Khoảng cách trên -->
         <div class="best-seller">
-            <p><strong>BEST-SELLERS</strong></p>
-            <a href="https://www.example.com" class="button">Xem thêm</a>
+            <a href='#'><strong>BEST-SELLERS</strong></a>
         </div>
+        <div class="best-seller-spacer"></div>  <!-- Khoảng cách dưới -->
+    </div>
         <div class="product-grid">
             <div class="product-card">
             <a href="#">
@@ -325,7 +580,7 @@
                 </div>
             </a>
                 <div class="product-info">
-                    <h3>BASHFUL BEIGE BUNNY</h3>
+                    <h3>AMUSEABLES BANANA BAG</h3>
                     <p>$15.00</p>
                 </div>
             </div>
@@ -336,8 +591,8 @@
                     </div>
                 </a>
                 <div class="product-info">
-                    <h3>SMUDGE RABBIT</h3>
-                    <p>$23.00</p>
+                    <h3>CHRISTMAS JELLYCAT JACK</h3>
+                    <p>$55.00</p>
                 </div>
             </div>
             <div class="product-card">
@@ -347,8 +602,8 @@
                 </div>
             </a>
                 <div class="product-info">
-                    <h3>BARTHOLOMEW BEAR</h3>
-                    <p>$23.00</p>
+                    <h3>AMUSEABLES HOT CHOCOLATE</h3>
+                    <p>$33.00</p>
                 </div>
             </div>
             <div class="product-card">
@@ -369,8 +624,8 @@
                 </div>
             </a>
                 <div class="product-info">
-                    <h3>BROOKE OTTER</h3>
-                    <p>$35.00</p>
+                    <h3>AMUSEABLES CROISSANT</h3>
+                    <p>$23.00</p>
                 </div>
             </div>
              <div class="product-card">
@@ -384,35 +639,109 @@
                     <p>$48.00</p>
                 </div>
             </div>
+            <div class="product-card">
+                <a href="#">
+                    <div class="image-hover7">
+                        <span class="best-seller-label">BEST-SELLER</span>
+                    </div>
+                </a>
+                    <div class="product-info">
+                        <h3>LITTLE PUP BAG CHARM</h3>
+                        <p>$25.00</p>
+                    </div>
+            </div>
+            <div class="product-card">
+                <a href="#">
+                    <div class="image-hover8">
+                        <span class="best-seller-label">BEST-SELLER</span>
+                    </div>
+                </a>
+                    <div class="product-info">
+                        <h3>NAPPING NIPPER CAT</h3>
+                        <p>$28.00</p>
+                    </div>
+            </div>
+        </div>
+        <div class="slogan">
+            <span class="quote-left">"</span>
+            <div class="slogan-content">
+                <span class="slogan-title"><strong><u>Born in London. Loved worldwide.</strong></u></span>
+                <span class="slogan-text">Welcome to the home of the Jellycat family where our mission is to share joy! Expect the unexpected. Embrace our gentle humour. Enjoy the exquisite textures and unusual colours… And if one of these characters makes you smile, make them part of your family too.</span>
+            </div>
+            <span class="quote-right">"</span>
+        </div>
+        <div class="christmas-container">
+            <div class="text-content-wrapper"> 
+                <div class="text-content">
+                    <h1>JELLYCAT CAFE</h1>
+                    <p>Please visit the below link for viewing the most unique and warm coffee shop that you have never experienced.</p>
+                    <a href="#" class="button">Explore more</a>
+                </div>
+            </div>
+            <div class="image-content">
+                <img src="./Ảnh/Screenshot 2024-12-04 at 22.30.00.png" alt="Christmas image">
+            </div>
         </div>
     </main>
-    
-    <script>
-        const slider = document.getElementById('image-slider');
-        const images = slider.querySelectorAll('img');
-        let currentImage = 0;
+    <footer>
+        <div class="container">
+            <div class="sec aboutus">
+                <h2>Về chúng tôi</h2>
+                <p>
+                    Jellycat là một công ty nổi tiếng toàn cầu, chuyên thiết kế và sản xuất các món đồ chơi nhồi bông cao cấp, đặc biệt là những chú thú nhồi bông dễ thương và độc đáo. Được thành lập vào năm 1999 tại London, Jellycat đã nhanh chóng chiếm được cảm tình của khách hàng trên toàn thế giới nhờ vào chất lượng vượt trội và sự sáng tạo không ngừng. 
+                    Với cam kết phát triển bền vững và trách nhiệm đối với cộng đồng, Jellycat tiếp tục khẳng định vị thế vững chắc trong ngành công nghiệp đồ chơi nhồi bông.
+                </p>
+                <ul class="sci">
+                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-tiktok"></i></a></li>
+                    <li><a href="#"><i class="fa-solid fa-x"></i></a></li>
 
-        function showImage(index) {
-            images.forEach(img => img.style.display = 'none');
-            images[index].style.display = 'block';
-        }
+                </ul>
+            </div>
+            <div class="sec quicklinks">
+                <h2>Tin tức</h2>
+                <ul>
+                    
+                    <li>
+                        <a href="https://lifestyle.znews.vn/jellycat-la-gi-ma-duoc-lo-lem-chao-yeu-thich-post1500529.html">Hết Labubu đến Jellycat gây sốt</a>
+                    </li>
 
-        setInterval(() => {
-            currentImage = (currentImage + 1) % images.length;
-            showImage(currentImage);
-        }, 3000); // 3000 milliseconds = 3 seconds
+                    <li>
+                        <a href="https://vnexpress.net/chu-cho-de-thuong-nhat-the-gioi-bi-nham-la-gau-bong-4013339.html">Mê gấu bông "biết đi" nên mình chọn mua Jellycat: Trải nghiệm siêu chill</a>
+                    </li>
+                    
+                    <li>
+                        <a href="https://vietcetera.com/vn/anh-chang-thu-gian-bieu-tuong-moi-cua-loi-song-cu-chill-di">Chill Noel Guy: Hãy mua gấu bông</a>
+                    </li>
 
-        showImage(currentImage); // Show the first image initially
+                    <li>
+                        <a href="https://cany.vn/blog/gau-bong-jellycat-co-gi-thu-vi-ma-em-pam-yeu-oi-lai-me-den-vay">Gấu bông Pamyeuoi có gì đặc biệt?</a>
+                    </li>
+                </ul>
 
-        const searchForm = document.querySelector('.search-bar form');
-        const searchInput = searchForm.querySelector('input[type="text"]');
+            </div>
 
-        searchForm.addEventListener('submit', function(event) {
-            if (searchInput.value.trim() === '') {
-                event.preventDefault(); // Ngăn chặn gửi biểu mẫu
-                alert('Vui lòng nhập từ khóa tìm kiếm!');
-            }
-        });
-    </script>
-</body>
+            <div class="sec contact">
+                <h2>Liên hệ</h2>
+                <ul class="info">
+                    <li>
+                        <span><i class="fa-solid fa-phone"></i></span>
+                        <p><a href="tel:+12345678">+ 123 456 78</a></p>
+                    </li>
+                    <li>
+                        <span><i class="fa-regular fa-envelope"></i></span>
+                        <p><a href="mailto:ptudtmdt@gmail.com">ptudtmdt@gmail.com</a></p>
+                    </li>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125428.95859731767!2d106.52416244335936!3d10.761053200000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ee4595019ad%3A0xf2a1b15c6af2c1a6!2zxJDhuqFpIGjhu41jIEtpbmggdOG6vyBUUC4gSOG7kyBDaMOtIE1pbmggKFVFSCkgLSBDxqEgc-G7nyBC!5e0!3m2!1svi!2s!4v1733408848189!5m2!1svi!2s" width="350" height="225" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <div class="copyrightText">
+        <p>© Jellycat Limited 2024
+            All rights reserved</p>
+    </div>
+    <script src = "danhmuc.js"></script>
+    </body>
 </html>
