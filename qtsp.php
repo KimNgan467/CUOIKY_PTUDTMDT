@@ -26,15 +26,26 @@ if(isset($_GET['delete'])){
         }
     }
     ?>
-        <div class="container">
-            <div class="adding">
-                <a href="qtsp_add.php?add=<?php $_SERVER['PHP_SELF'] ?>" class="btn">Thêm sản phẩm</a>
-            </div>
+    <div class="management">
+        <div class="left-menu">
+                        <div class="menu-heading"><strong>Trang quản trị</strong></div>
+                        <div class="menu-items">
+                            <ul>
+                                <li><a href="#">Thông tin admin</a></li>
+                                <li><a href="#">Tin tức</a></li>
+                                <li><a href="qtsp.php">Sản phẩm</a></li>
+                                <li><a href="#">Đơn hàng</a></li>
+                            </ul>
+                        </div>
+                        </div>
     <?php
         $select = mysqli_query($conn, "SELECT * FROM products");
     ?>
-    <div class="product-display">
-    <table class="product-display-table">
+        <div class="product-display">
+            <div class="adding">
+        <a href="qtsp_add.php?add=<?php $_SERVER['PHP_SELF'] ?>" class="btn">+ Thêm sản phẩm</a>
+        </div>
+        <table class="product-display-table">
             <tr>
         <th>Ảnh sản phẩm</th>
         <th>Tên sản phẩm</th>
@@ -54,8 +65,9 @@ if(isset($_GET['delete'])){
             </td>
          </tr>
       <?php } ?>
-    </table>
+        </table>
+        </div>
     </div>
-</div>
+    </div>
 </body>
 </html>

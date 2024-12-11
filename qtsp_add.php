@@ -15,7 +15,6 @@ if(isset($_POST['add_product'])){
         // Sử dụng prepared statement để ngăn chặn SQL injection
         $stmt = $conn->prepare("INSERT INTO products (name, price, size, image) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("sids", $product_name, $product_price, $product_size, $product_image);
-
         if($stmt->execute()){
             move_uploaded_file($product_image_tmp_name, $product_image_folder);
             header('location:qtsp.php');
@@ -37,7 +36,7 @@ if(isset($_POST['add_product'])){
     </head>
     <body>
     <?php if(isset($message)){ foreach($message as $msg){ echo "<span class='message'>$msg</span>"; } } ?>
-        <div class="container">
+        <div class="product-display">
             <div class="admin-product-form-container">
                 <form action="" method="post" enctype="multipart/form-data">
                     <h3 class="title">Thêm sản phẩm</h3>
@@ -45,7 +44,7 @@ if(isset($_POST['add_product'])){
                     <input type="number" class="box" name="product_price" placeholder="Nhập giá sản phẩm...">
                     <input type="text" name="product_size" class="box" placeholder="Nhập kích cỡ sản phẩm...">
                     <input type="file" class="box" name="product_image" accept="image/png, image/jpeg, image/jpg">
-                    <input type="submit" value="Thêm sản phẩm" name="add_product" class="btn">
+                    <input type="submit" value="+ Thêm sản phẩm" name="add_product" class="btn">
                     <a href="qtsp.php" class="btn">Trở lại trang trước</a>
                 </form>
             </div>

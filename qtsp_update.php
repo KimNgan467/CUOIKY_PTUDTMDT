@@ -44,7 +44,7 @@ if($upload){
       }
    }
    ?>
-   <div class="container">
+   <div class="product-display">
     <div class="admin-product-form-container centered">
    <?php
         $select = mysqli_query($conn, "SELECT * FROM products WHERE id = '$id'");
