@@ -2,8 +2,8 @@
 session_start(); // Bắt đầu phiên làm việc
 
 $servername = "localhost";
-$username = "dieuhuyen"; 
-$password = "123456"; 
+$username = "root"; 
+$password = ""; 
 $dbname = "register"; // Đổi tên nếu cần
 
 // Tạo kết nối
@@ -14,7 +14,7 @@ if ($conn->connect_error) {
     die("Kết nối thất bại: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM userform";
+$sql = "SELECT * FROM userform where usertype = 'admin'";
 $result = $conn->query($sql);
 $userlist = [];
 
@@ -41,6 +41,7 @@ if ($result->num_rows > 0) {
                         Xin chào <span><?= $_SESSION['admin_name'] ?></span>
                     </div>
                     <div class="right-panel">
+                    <a href="#">Trang chủ</a>
                         <a href="logout.php">Đăng xuất</a>
                     </div>
                 </div>
@@ -55,6 +56,7 @@ if ($result->num_rows > 0) {
                                 <li><a href="#">Tin tức</a></li>
                                 <li><a href="#">Sản phẩm</a></li>
                                 <li><a href="#">Đơn hàng</a></li>
+                                <li><a href="#">Khách hàng</a></li>
                             </ul>
                         </div>
                     </div>
@@ -79,7 +81,7 @@ if ($result->num_rows > 0) {
                     <td>'.$item['id'].'</td>
                     <td>'.$item['name'].'</td>
                     <td>'.$item['email'].'</td>
-                    <td>'.$item['password'].'</td>
+                    <td>****</td>
                     <td>'.$item['usertype'].'</td>
                     <td>
                     <a href = "editadmin.php?id='.$item['id'].'"><button class = "button btn_edit">Sửa</button></a>
