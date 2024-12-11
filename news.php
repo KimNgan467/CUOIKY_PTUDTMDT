@@ -144,7 +144,7 @@
         <h1>Tin tức & sự kiện</h1>
         <div class="news-grid">
             <div class="news-item">
-                <a href="tintuc1.html" target="_blank">
+                <a href="tintuc1.php" target="_blank">
                     <div class="image-placeholder">
                         <img src="picture/sh-cafe-activation-4.jpg" alt="Tên tin tức 1">
                     </div>
