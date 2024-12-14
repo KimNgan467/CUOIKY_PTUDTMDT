@@ -1,0 +1,363 @@
+body {
+  font-family: monospace;
+  overflow-x: hidden;
+  font-size: 15px;
+}
+a {
+  text-decoration: none;
+}
+.container {
+  width: 1200px;
+  margin: auto;
+  max-width: 90%;
+  transition: 1s; /*Có thể có lỗi*/
+  z-index: 1;
+}
+/* header img {
+  width: 60px;
+}
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header .iconCart {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+} */
+
+.listProduct {
+  /*cấu trúc cách hiển thị sản phẩm theo dạng lưới*/
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.listProduct .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.listProduct .item button {
+  background-color: #e6572c;
+  color: #fff;
+  border: none;
+  padding: 10px 15px; /* Giảm kích thước padding để nút nhỏ hơn */
+  font-size: 14px; /* Giảm kích thước font nếu cần */
+  cursor: pointer;
+  border-radius: 5px; /* Thêm bo góc cho nút */
+  transition: background-color 0.3s; /* Thêm hiệu ứng chuyển đổi */
+  width: 50%;
+  margin-top: 10px;
+}
+
+.listProduct .item button:hover {
+  background-color: #d45a27; /* Thay đổi màu khi hover */
+  font-weight: bold;
+}
+.listProduct .item .product-title,
+.listProduct .item .price {
+  text-align: center;
+  color: #000;
+}
+.select-size {
+  display: block;
+  padding: 5px 10px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+.select-size select {
+  padding: 7px;
+  border-radius: 20px;
+  font-size: 15px;
+}
+.listProduct .item img {
+  height: 180px; /* Giữ tỷ lệ khung hình */
+  max-width: 300px; /* Giới hạn kích thước tối đa của hình ảnh */
+  margin-bottom: 10px; /* Khoảng cách giữa hình ảnh và các chi tiết sản phẩm */
+  object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
+}
+/* .listProduct .item img {
+  width: 100%;
+} */
+.listProduct .item h2 {
+  font-weight: 700;
+  font-size: x-large;
+}
+/* .listProduct .item .price {
+  font-size: x-large;
+} */
+.listProduct .item .price {
+  font-size: 20px;
+  margin: 0;
+  margin-top: 10px;
+}
+/* .listProduct .item button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: #e6572c;
+  color: #fff;
+  width: 50%;
+  border: none;
+  padding: 20px 30px;
+  box-shadow: 0 10px 50px #000;
+  cursor: pointer;
+  transform: translateX(-50%) translateY(100px);
+  opacity: 0;
+}
+
+.listProduct .item:hover button {
+  transition: 0.5s;
+  opacity: 1;
+  transform: translateX(-50%);
+}*/
+
+.listProduct .item button {
+  background-color: #e6572c;
+  color: #fff;
+  border: none;
+  padding: 10px 15px; /* Giảm kích thước padding để nút nhỏ hơn */
+  font-size: 14px; /* Giảm kích thước font nếu cần */
+  cursor: pointer;
+  border-radius: 5px; /* Thêm bo góc cho nút */
+  transition: background-color 0.3s; /* Thêm hiệu ứng chuyển đổi */
+  width: 50%;
+  margin-top: 10px;
+}
+
+.listProduct .item button:hover {
+  background-color: #d45a27; /* Thay đổi màu khi hover */
+}
+
+.cart {
+  color: #000;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 400px;
+  height: 100vh;
+  background-color: #fff;
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
+  gap: 20px;
+  transition: right 1s;
+  z-index: 9999; /* Thêm z-index để giỏ hàng nằm trên tất cả */
+  box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
+}
+.cart h2 {
+  color: #e6572c;
+  padding: 20px;
+  margin: 0;
+}
+
+.cart .close {
+  padding: 10px;
+  position: absolute; /* Đặt vị trí tuyệt đối */
+  top: 10px; /* Khoảng cách từ trên xuống */
+  right: 10px; /* Khoảng cách từ bên phải */
+  font-size: 24px; /* Kích thước chữ */
+  color: #e6572c; /* Màu sắc chữ */
+  cursor: pointer; /* Hiển thị con trỏ chuột kiểu tay khi hover */
+  z-index: 10000; /* Đảm bảo close nằm trên các phần tử khác */
+  transition: color 0.3s; /* Hiệu ứng chuyển màu khi hover */
+}
+
+.cart .close:hover {
+  background-color: #e6572c; /* Thay đổi màu khi hover */
+  color: #fff;
+  padding: 10px;
+}
+
+.cart .listCart .item {
+  display: grid;
+  grid-template-columns: 50px 1fr 70px;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.cart .listCart img {
+  width: 100%;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.cart .listCart .quantity .change {
+  border: #d45a27 1px solid;
+  border-radius: 5px;
+  color: #000;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+}
+.cart .listCart .quantity .change:hover {
+  font-weight: bold;
+}
+.quantity button.remove {
+  border: none;
+  border-radius: 5px;
+  background-color: #fff; /* Màu đỏ */
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.quantity button.remove:hover {
+  color: #c82333; /* Màu đỏ đậm khi hover */
+}
+.cart .listCart .quantity button .cart .listCart .item .name {
+  font-weight: bold;
+}
+.cart .listCart .item .quantity {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.cart .listCart .item span {
+  display: block;
+  width: 50px;
+  text-align: center;
+}
+.cart .listCart {
+  padding: 20px;
+  overflow: auto;
+}
+.cart .listCart::-webkit-scrollbar {
+  width: 0;
+}
+.cart .buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+}
+.cart .buttons div {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+.resetCartButton {
+  margin-left: 5px;
+  color: white;
+  padding: 1em 2em;
+  background-color: black;
+  color: #ffff;
+  border: none;
+  cursor: pointer;
+}
+.resetCartButton:hover {
+  font-weight: bold;
+}
+.cart .buttons a {
+  color: #fff;
+}
+.cart .buttons .checkout {
+  background-color: #f76d16;
+}
+
+.search-left {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.filter-condition {
+  padding: 20px 0 0 0;
+  height: 100px;
+  font-weight: bold;
+  font-size: 16px; /* Thay đổi kích thước chữ nếu cần */
+  margin-left: 100px; /* Thêm khoảng cách bên trái */
+  display: flex; /* Sử dụng flexbox để sắp xếp phần tử bên trong */
+  align-items: center; /* Căn giữa phần tử bên trong */
+  margin-right: 20px;
+}
+.filter-condition select {
+  width: 120px;
+  padding: 0 0 0 10px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  color: #f76d16;
+  background: transparent;
+  cursor: pointer;
+}
+.search-left {
+  display: flex;
+  align-items: center; /* Căn giữa theo chiều dọc */
+  justify-content: space-between; /* Căn đều khoảng cách giữa các phần tử */
+  margin: 20px; /* Thêm một chút margin cho thẩm mỹ */
+}
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #a0d5e8;
+  color: white;
+  padding: 15px;
+  border-radius: 5px;
+  z-index: 1000;
+  display: none; /* Ẩn mặc định */
+}
+
+.iconCart {
+  position: relative; /* Để totalQuantity có thể được định vị chính xác */
+  z-index: 1000;
+}
+
+.previewCart {
+  position: relative; /* Đặt vị trí cho nút giỏ hàng */
+  padding: 10px; /* Thêm padding để có không gian */
+  background-color: #d45a27; /* Thay đổi màu nền nếu cần */
+  border: none; /* Bỏ viền nếu không cần */
+  cursor: pointer; /* Đổi con trỏ khi di chuột */
+  color: #fff;
+  font-weight: bold;
+}
+
+.iconCart .totalQuantity {
+  position: absolute; /* Đặt vị trí tuyệt đối */
+  top: 0; /* Đặt ở trên cùng */
+  right: 0; /* Đặt ở bên phải */
+  font-size: 15px;
+  background-color: #b31010;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate(50%, -50%); /* Điều chỉnh để đính vào góc */
+  z-index: 999; /*Đảm bảo rằng totalQuantity nằm trên nút.*/
+}
+
+#search-container {
+  flex: 1; /* Chiếm không gian còn lại */
+  display: flex; /* Sử dụng flexbox để sắp xếp các phần tử bên trong */
+  align-items: center; /* Căn giữa phần tử bên trong */
+}
+
+#search-container input {
+  background-color: transparent;
+  width: 40%; /* Thay đổi độ rộng theo nhu cầu */
+  border-bottom: 2px solid #110f29;
+  padding: 1em 0.3em;
+  margin-right: 10px; /* Thêm khoảng cách giữa input và button */
+  margin-left: 100px;
+}
+
+#search-container button {
+  padding: 1em 2em;
+  background-color: black;
+  color: #ffff;
+  border-radius: 0.5em;
+  margin-top: 0.5em;
+  cursor: pointer;
+}

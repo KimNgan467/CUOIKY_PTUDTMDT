@@ -1,0 +1,354 @@
+@import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;500&display=swap');
+
+/* Reset margin và padding cho toàn bộ trang */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cài đặt phông chữ và màu nền cho toàn bộ trang */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Khung bao quanh header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    background-color: #05719D;  /* Màu nền tối cho header */
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ nhẹ cho header */
+}
+
+/* Logo */
+header img {
+    height: 45px;
+}
+
+/* Phần menu bên trái */
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-left a {
+    color: white;
+    text-decoration: none;
+    margin: 10px 80px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 18px;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease; /* Hiệu ứng chuyển động cho màu và kích thước */
+    padding: 8px 12px; /* Thêm padding để tạo không gian cho khung */
+    border-radius: 5px; /* Bo góc cho khung */
+}
+
+/* Thêm hiệu ứng hover cho các liên kết menu */
+.header-left a:hover {
+    text-decoration: none;
+}
+.header-left a::before { 
+    content: "";
+    position: absolute;
+    bottom: 0; 
+    left: 0;
+    width: 100%;
+    height: 2px; 
+    background-color: transparent; 
+    transition: background-color 0.3s ease; 
+}
+.header-left a:hover::before {
+    background-color: #A0D5E8; 
+}
+
+/* Menu dropdown */
+.drop-down {
+    position: relative; /* Đảm bảo dropdown được đặt đúng vị trí */
+}
+
+.detail {
+    display: none; /* Ẩn dropdown mặc định */
+    position: absolute;
+    background-color: #ffffff; /* Màu nền trắng cho dropdown */
+    border-radius: 8px; /* Bo góc */
+    min-width: 10px; /* Chiều rộng tối thiểu */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Bóng đổ mạnh hơn */
+    z-index: 10; /* Đảm bảo dropdown luôn ở trên các phần tử khác */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Hiệu ứng chuyển động cho dropdown */
+    opacity: 0; /* Bắt đầu với độ mờ */
+    visibility: hidden; /* Ẩn dropdown */
+}
+
+.drop-down:hover .detail {
+    display: block; /* Hiển thị dropdown khi hover */
+    opacity: 1; /* Đưa độ mờ về 1 */
+    visibility: visible; /* Thay đổi thành visible khi hiển thị */
+}
+
+.detail a {
+    color: #05719D; /* Màu chữ cho các mục con */
+    text-decoration: none; /* Bỏ gạch chân */
+    padding: 10px 15px; /* Khoảng cách cho các mục */
+    display: block; /* Thay đổi thành block để dễ dàng nhấp chuột */
+    text-align: left; /* Căn trái nội dung */
+    font-size: 16px; /* Kích thước chữ */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng chuyển động cho màu nền và chữ */
+    white-space: nowrap; /* Ngăn không cho chữ bị xuống dòng */
+}
+
+.detail a:hover {
+    background-color: rgba(0, 87, 115, 0.1); /* Màu nền khi hover vào các mục con */
+    color:black; /* Màu chữ thay đổi khi hover */
+    border-radius: 8px; /* Bo góc cho mục khi hover */
+    transform: translateY(-2px); /* Hiệu ứng di chuyển nhẹ lên khi hover */
+}
+
+/* Thêm một hiệu ứng cho dropdown khi hiển thị */
+.drop-down:hover .detail {
+    animation: fadeIn 0.3s ease; /* Hiệu ứng fade in khi hiển thị */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px); /* Di chuyển nhẹ lên trên */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Về vị trí ban đầu */
+    }
+}
+
+/* Phần menu bên phải */
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Giỏ hàng */
+.header-right a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.header-right a:hover {
+    color:#D7F9FD;
+    transform: translateY(-3px);
+}
+
+/* Người dùng */
+/* Biểu tượng người dùng */
+.user-info a {
+    color: white;
+    margin-left: 25px;
+}
+/* Hiệu ứng hover cho biểu tượng người dùng */
+.user-info a:hover {
+    color: #D7F9FD;
+    transform: translateY(-3px);
+}
+/* Đặc biệt đối với người dùng đã đăng nhập */
+.user-info .user-greeting {
+    margin-right: 20px;
+}
+/* Liên kết đăng xuất */
+.logout-link {
+    color: white;
+    font-size: 20px;
+    margin-left: 10px;
+}
+.logout-link:hover {
+    color: #D7F9FD;
+}
+
+/* Thêm hiệu ứng cho các liên kết khi active và focus */
+header a:active, header a:focus {
+    outline: none;
+}
+
+/* Container chính */
+.container {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto; /* Căn giữa giao diện */
+}
+
+/* Sidebar */
+.left-menu {
+    width: 240px;
+    height: 450px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-left: 0px;
+    font-size: 14px;
+}
+
+/* Tiêu đề menu trong sidebar */
+.menu-heading {
+    background: #a0d5e8;
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Danh sách menu */
+.menu-items ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-items ul li {
+    line-height: 35px;
+    border-bottom: 1px solid #ddd;
+}
+
+.menu-items ul li a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-items ul li a:hover {
+    background-color: #e1e1e1;
+}
+
+/* Nội dung chính */
+.admininfo {
+    margin-top: 0px;
+    margin-left: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 100%; /* Đảm bảo nội dung tab chiếm toàn bộ chiều rộng */
+    max-width: 900px; /* Đặt chiều rộng tối đa để đồng nhất layout */
+    max-height: 450px;
+    overflow-y: auto; /* Bật thanh cuộn dọc nếu nội dung vượt quá chiều cao */
+    overflow-x: auto; /* Ẩn cuộn ngang cho `.tab-content` */
+}
+
+/* Bảng */
+.admin {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin th, .admin td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.admin th {
+    background-color: #a0d5e8;
+    color: white;
+}
+
+.admin tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.admin tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Nút sửa và xóa */
+.button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+.btn_edit {
+    background-color: #06719d;
+    color: white;
+}
+
+.btn_edit:hover {
+    background-color: #066084;
+}
+
+.btn_delete {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn_delete:hover {
+    background-color: #c62828;
+}
+
+/* CSS cho ô tìm kiếm */
+.admininfo form {
+    display: flex; /* Sử dụng flexbox để căn chỉnh */
+    margin-bottom: 20px; /* Khoảng cách dưới ô tìm kiếm */
+}
+
+/* Style cho input tìm kiếm */
+.admininfo input[type="text"] {
+    flex: 1; /* Cho phép input mở rộng */
+    padding: 10px; /* Thêm padding cho input */
+    border: 1px solid #ccc; /* Đường viền xám nhạt */
+    border-radius: 5px; /* Bo góc */
+    font-size: 16px; /* Kích thước chữ */
+    margin-right: 10px; /* Khoảng cách giữa input và nút */
+}
+
+/* Style cho nút tìm kiếm */
+.admininfo button {
+    padding: 10px 15px; /* Padding cho nút */
+    
+    color: white; /* Màu chữ trắng */
+    border: none; /* Không có đường viền */
+    border-radius: 5px; /* Bo góc */
+    cursor: pointer; /* Con trỏ chuột khi hover */
+    font-size: 16px; /* Kích thước chữ */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+/* Thay đổi màu nút khi hover */
+.admininfo button:hover {
+    background-color: #0056b3; /* Màu tối hơn khi hover */
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .left-menu {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .admin th, .admin td {
+        font-size: 12px;
+    }
+
+    .button {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}

@@ -1,0 +1,57 @@
+[
+    {
+        "id": "8",
+        "name": "AMUSEABLES CROISSANT",
+        "price": "23",
+        "size": "S",
+        "description": "AMUSEABLES CROISSANT",
+        "category": "Animals",
+        "image1": "Croissant Front.jpg",
+        "image2": "Croissant Left.jpg",
+        "image3": "Croissant Left.jpg"
+    },
+    {
+        "id": "10",
+        "name": "TIMMY TURTLE",
+        "price": "48",
+        "size": "M",
+        "description": "",
+        "category": "",
+        "image1": "Turtle Front.jpg",
+        "image2": "",
+        "image3": ""
+    },
+    {
+        "id": "11",
+        "name": "LITTLE PUP BAG CHARM",
+        "price": "24",
+        "size": "XL",
+        "description": "G\u1ea5u b\u00f4ng Jellycat l\u00e0 m\u1ed9t s\u1ea3n ph\u1ea9m th\u00fa b\u00f4ng cao c\u1ea5p n\u1ed5i ti\u1ebfng v\u1edbi ch\u1ea5t l\u01b0\u1ee3ng tuy\u1ec7t v\u1eddi v\u00e0 thi\u1ebft k\u1ebf \u0111\u00e1ng y\u00eau. Jellycat l\u00e0 th\u01b0\u01a1ng hi\u1ec7u n\u1ed5i ti\u1ebfng \u0111\u1ebfn t\u1eeb Anh Qu\u1ed1c, chuy\u00ean s\u1ea3n xu\u1ea5t c\u00e1c m\u00f3n \u0111\u1ed3 ch\u01a1i m\u1ec1m m\u1ea1i, an to\u00e0n v\u00e0 d\u1ec5 th\u01b0\u01a1ng, v\u1edbi c\u00e1c h\u00ecnh d\u1ea1ng phong ph\u00fa t\u1eeb nh\u1eefng con th\u00fa ng\u1ed9 ngh\u0129nh \u0111\u1ebfn c\u00e1c nh\u00e2n v\u1eadt \u0111\u1ed9c \u0111\u00e1o. D\u01b0\u1edbi \u0111\u00e2y l\u00e0 m\u00f4 t\u1ea3 chi ti\u1ebft v\u1ec1 s\u1ea3n ph\u1ea9m g\u1ea5u b\u00f4ng Jellycat",
+        "category": "Animals",
+        "image1": "Pup Bag Charm Front.jpg",
+        "image2": "Pup Bag Charm Left.jpg",
+        "image3": "Pup Bag Charm Front.jpg"
+    },
+    {
+        "id": "23",
+        "name": "Eldo Elf",
+        "price": "35",
+        "size": "L",
+        "description": "G\u1ea5u b\u00f4ng Jellycat l\u00e0 m\u1ed9t s\u1ea3n ph\u1ea9m th\u00fa b\u00f4ng cao c\u1ea5p n\u1ed5i ti\u1ebfng v\u1edbi ch\u1ea5t l\u01b0\u1ee3ng tuy\u1ec7t v\u1eddi v\u00e0 thi\u1ebft k\u1ebf \u0111\u00e1ng y\u00eau. Jellycat l\u00e0 th\u01b0\u01a1ng hi\u1ec7u n\u1ed5i ti\u1ebfng \u0111\u1ebfn t\u1eeb Anh Qu\u1ed1c, chuy\u00ean s\u1ea3n xu\u1ea5t c\u00e1c m\u00f3n \u0111\u1ed3 ch\u01a1i m\u1ec1m m\u1ea1i, an to\u00e0n v\u00e0 d\u1ec5 th\u01b0\u01a1ng, v\u1edbi c\u00e1c h\u00ecnh d\u1ea1ng phong ph\u00fa t\u1eeb nh\u1eefng con th\u00fa ng\u1ed9 ngh\u0129nh \u0111\u1ebfn c\u00e1c nh\u00e2n v\u1eadt \u0111\u1ed9c \u0111\u00e1o. D\u01b0\u1edbi \u0111\u00e2y l\u00e0 m\u00f4 t\u1ea3 chi ti\u1ebft v\u1ec1 s\u1ea3n ph\u1ea9m g\u1ea5u b\u00f4ng Jellycat",
+        "category": "Animals",
+        "image1": "EldoElf.jpg",
+        "image2": "EldoElf2.jpg",
+        "image3": "EldoElf3.jpg"
+    },
+    {
+        "id": "24",
+        "name": "Jackson Husky",
+        "price": "38",
+        "size": "XL",
+        "description": "G\u1ea5u b\u00f4ng Jellycat l\u00e0 m\u1ed9t s\u1ea3n ph\u1ea9m th\u00fa b\u00f4ng cao c\u1ea5p n\u1ed5i ti\u1ebfng v\u1edbi ch\u1ea5t l\u01b0\u1ee3ng tuy\u1ec7t v\u1eddi v\u00e0 thi\u1ebft k\u1ebf \u0111\u00e1ng y\u00eau. Jellycat l\u00e0 th\u01b0\u01a1ng hi\u1ec7u n\u1ed5i ti\u1ebfng \u0111\u1ebfn t\u1eeb Anh Qu\u1ed1c, chuy\u00ean s\u1ea3n xu\u1ea5t c\u00e1c m\u00f3n \u0111\u1ed3 ch\u01a1i m\u1ec1m m\u1ea1i, an to\u00e0n v\u00e0 d\u1ec5 th\u01b0\u01a1ng, v\u1edbi c\u00e1c h\u00ecnh d\u1ea1ng phong ph\u00fa t\u1eeb nh\u1eefng con th\u00fa ng\u1ed9 ngh\u0129nh \u0111\u1ebfn c\u00e1c nh\u00e2n v\u1eadt \u0111\u1ed9c \u0111\u00e1o. D\u01b0\u1edbi \u0111\u00e2y l\u00e0 m\u00f4 t\u1ea3 chi ti\u1ebft v\u1ec1 s\u1ea3n ph\u1ea9m g\u1ea5u b\u00f4ng Jellycat",
+        "category": "Gifts",
+        "image1": "JAC3H__76101.jpg",
+        "image2": "JAC3H_2__92204.jpg",
+        "image3": "JAC3H_3__66005.jpg"
+    }
+]
